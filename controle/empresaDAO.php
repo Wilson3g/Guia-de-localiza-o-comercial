@@ -76,7 +76,7 @@
       }
 
       public function exibirComentario($id){
-        $sql = "SELECT * FROM comentario INNER JOIN cliente on comentario.cliente_cliente_id = cliente.cliente_id";
+        $sql = "SELECT * FROM comentario INNER JOIN cliente on comentario.cliente_cliente_id = cliente.cliente_id WHERE empresa_empresa_id = ?";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(1, $id);
         $stmt -> execute();
@@ -120,7 +120,7 @@
               $idUsuario = $_SESSION['logado'];
 
               $_SESSION['cliente_atu'] = "<div class='alert alert-success' role='alert'>Atualizado com sucesso!</div>";
-              header("Location: ../view/atualizar-clienteC.php?id='.$idUsuario.'");
+              header("Location: ../atualizar-clienteC.php?id='.$idUsuario.'");
             }
         }
       }

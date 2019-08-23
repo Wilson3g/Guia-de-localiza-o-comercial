@@ -129,7 +129,7 @@
     
                   if(isset($stmt)){
                     echo "<script>
-					window.location.href='../view/informacoes.php?idusuario={$idusuario}';
+					window.location.href='../informacoes.php?idusuario={$idusuario}';
 					</script>";
                   }
                 }catch(PDOException $e){
@@ -172,7 +172,7 @@
             if(isset($stmt)){
                 $upload = move_uploaded_file($tmp, $pasta.'/'.$novoNome);
                 if($upload){
-                     echo "<script>window.location.href='../view/endereco.php?idusuario={$idusuario}'</script>";
+                     echo "<script>window.location.href='../endereco.php?idusuario={$idusuario}'</script>";
                 }
             }
         }
@@ -191,7 +191,7 @@
             $stmt->execute();
                 
             if(isset($stmt)){
-                echo "<script>window.location.href='../view/index.php'</script>";
+                echo "<script>window.location.href='../index.php'</script>";
             }
         }
     }

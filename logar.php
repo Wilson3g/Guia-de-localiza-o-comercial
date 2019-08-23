@@ -33,7 +33,6 @@
 
     <ul class="navbar-nav1">
       <li><a href="index.php">Início</a></li>
-      <li><a href="social.php">Social Flip</a></li>
       <li><a href="cadastro_pj.php">Cadastrar Empresa</a></li>
       <li><a href="cadastro_pf.php">Cadastrar Cliente</a></li>
     </ul>
@@ -52,15 +51,15 @@
 
   <!-- INICIO DO FORMULARIO DE LOGIN -->
 	<div class="d1">
-    <img src="../img/bg2.jpeg" alt="">
+    <img src="img/bg2.jpeg" alt="">
   </div>
 
   <div class="login">
-    <form action="../controle/logar.php" method="POST">
+    <form action="controle/logar.php" method="POST">
       <h2>Login</h2>
 
       <label for="">Email</label>
-      <input class="txtb" type="text" name="email">
+      <input class="txtb" type="email" name="email">
 
       <label for="Senha">Senha</label>
       <input class="txtb" type="password" name="senha">

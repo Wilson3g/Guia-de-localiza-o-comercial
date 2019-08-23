@@ -30,7 +30,6 @@
 
       <ul class="navbar-nav1">
         <li><a href="index.php">Início</a></li>
-        <li><a href="social.php">Social Flip</a></li>
         <li><a href="logar.php">Entrar</a></li>
       </ul>
     </nav>
@@ -48,15 +47,15 @@
 
 	<!-- FORMULARIO DE CADASTRO -->
 	<div class="d1">
-		<img src="../img/bg2.jpeg" alt="">
+		<img src="img/bg2.jpeg" alt="">
 	</div>
 
 	<div class="login">
-		<form action="../controle/clienteDTO.php" method="POST">
+		<form action="controle/clienteDTO.php" method="POST">
 		<h2>Cadastrar como usuário</h2>
 
 		<label for="">Email</label>
-		<input class="txtb" name="email" type="text">
+		<input class="txtb" name="email" type="email">
 
 		<label for="Senha">Senha</label>
 		<input class="txtb" name="senha" type="password">

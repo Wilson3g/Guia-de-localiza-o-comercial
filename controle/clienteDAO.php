@@ -35,7 +35,7 @@
 
         if(isset($stmt)){
           echo "<script>
-					window.location.href='../view/info_cliente.php?idusuario={$idusuario}';
+					window.location.href='../info_cliente.php?idusuario={$idusuario}';
 					</script>";
         }
       }catch(PDOException $e){
@@ -72,7 +72,7 @@
       if(isset($stmt)){
         $upload = move_uploaded_file($tmp, $pasta.'/'.$novoNome);
         if($upload){
-          header("../view/index.php");
+          header("../logar.php");
         }
     }
     }
@@ -177,7 +177,7 @@
           $idusuario = $_SESSION['logado'];
 
           $_SESSION['cliente_atu'] = "<div class='alert alert-success' role='alert'>Atualizado com sucesso!</div>";
-          header("Location: ../view/atualizar-cliente.php?idusuario=$idusuario");
+          header("Location: ../atualizar-cliente.php?idusuario=$idusuario");
         }
 
       }catch(PDOException $e){

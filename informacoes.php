@@ -1,11 +1,10 @@
-<?php
-  $id = $_GET['idusuario'];
-?>
+
 <!DOCTYPE html>
 <html lang="pt-br" dir="ltr">
   <head>
     <meta charset="utf-8">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!-- folhas de estilo -->
@@ -36,7 +35,6 @@
       <ul class="navbar-nav1">
         <li><a href="index.php">Início</a></li>
         <li><a href="social.php">Social Flip</a></li>
-        <li><a href="logar.php">Entrar</a></li>
       </ul>
     </nav>
 
@@ -53,33 +51,64 @@
 
     <!-- INICIO DA ZONA FORMULARIO DE INFORMACOES -->
     <div class="container">
-      <form action="../controle/clienteDTO.php" method="POST" enctype="multipart/form-data">
-        <input type="hidden" name="idUsuario" value="<?php echo $id ?>">
+      <form action="controle/informacoesDTO.php" method="POST" enctype="multipart/form-data">
+
+        <input type="hidden" name="idusuario" value="<?php echo $_GET['idusuario']?>">
+
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label for="nome">Nome</label>
-            <input type="nome" class="form-control" name="nome" id="nome" placeholder="Ex: Maria">
+            <label for="nome">Nome Fantasia</label>
+            <input type="text" class="form-control" name="nomeFantasia" id="nome" placeholder="Ex: Stratus Restaurante">
           </div>
           <div class="form-group col-md-6">
-            <label for="sobrenome">Sobrenome</label>
-            <input type="text" class="form-control" id="sobrenome" name="sobrenome" placeholder="Ex: Sousa">
+            <label for="cnpj">CNPJ</label>
+            <input type="number" class="form-control" name="cnpj" id="cnpj" placeholder="Ex: 21.717.837/0001-26">
           </div>
         </div>
         
         <div class="form-row">
-          <div class="form-group col-md-4">
-            <label for="cpf">CPF</label>
-            <input type="text" class="form-control" id="endereco" name="cpf" placeholder="Ex: 938.938.938-30">
+          <div class="form-group col-md-6">
+            <label for="descricao">Descrição</label>
+            <input type="text" class="form-control" name="descricao" id="descricao">
           </div>
           <div class="form-group col-md-4">
-            <label for="cidade">Foto de perfil</label>
-            <input class="btn btn-danger" type="file" name="img" id="produto">
+            <label for="tipo">Tipo de estabelecimento</label>
+            <select id="tipo" name="categoria" class="form-control">
+              <option selected>Escolha</option>
+              <option value="Bar">Bar</option>
+              <option value="Loja">Loja</option>
+              <option value="Restaurante">Restaurante</option>
+            </select>
+          </div>
+          <div class="form-group col-md-2">
+            <label for="telefone">Telefone</label>
+            <input type="number" class="form-control" name="telefone" id="telefone" placeholder="Ex: (61) 2930-9304">
           </div>
         </div>
-        
-        <input type="submit" class="btn btn-primary" name="inserirInformacoes" value="Terminar">
+
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="inicio">Início de expediente</label>
+            <input type="time" class="form-control" name="inicioExpediente" id="inicio">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="final">Final de expediente</label>
+            <input type="time" class="form-control" name="fimExpediente" id="final">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="perfil">Foto de perfil</label>
+            <input type="file" name="img">
+          </div>
+        </div>
+
+        <input type="submit" class="btn btn-primary" name="terminar" value="Terminar">
+
       </form>
     </div>
+
     <!-- FIM DA ZONA FORMULARIO INFORMACOES  -->
 
     <script>

@@ -1,5 +1,5 @@
 <?php
-  include_once('../controle/clienteDAO.php');
+  include_once('controle/clienteDAO.php');
   $id = $_GET['idusuario'];
 ?>
 
@@ -25,21 +25,34 @@
     <!-- INICIO DA ZONA DE MENU -->
 
     <nav class="navbar1">
-      <span class="open-slide">
+        <span class="open-slide">
         <a href="#" onclick="openSlideMenu()">
-          <svg width="30" height="30">
-              <path d="M0,5 30,5" stroke="#000" stroke-width="5"/>
-              <path d="M0,14 30,14" stroke="#000" stroke-width="5"/>
-              <path d="M0,23 30,23" stroke="#000" stroke-width="5"/>
-          </svg>
+            <svg width="30" height="30">
+                <path d="M0,5 30,5" stroke="#000" stroke-width="5"/>
+                <path d="M0,14 30,14" stroke="#000" stroke-width="5"/>
+                <path d="M0,23 30,23" stroke="#000" stroke-width="5"/>
+            </svg>
         </a>
-      </span>
+        </span>
 
-      <ul class="navbar-nav1">
+        <ul class="navbar-nav1">
         <li><a href="index.php">Início</a></li>
-        <li><a href="social.php">Social Flip</a></li>
-        <li><a href="logar.php">Entrar</a></li>
-      </ul>
+        <?php
+            include_once('controle/clienteDAO.php');
+
+            session_start();
+            if(isset($_SESSION['logado'])){
+                $idCliente = $_SESSION['logado'];
+                echo'
+        <li><a href="atualizar-cliente.php?idusuario='.$idCliente.'">Meu perfil</a></li>
+        <li><a href="controle/sair.php">Sair</li>';
+        
+            }else{
+                echo'
+        <li><a href="logar.php">Entrar</a></li>';
+            }
+        ?>
+        </ul>
     </nav>
 
     <div id="side-menu" class="side-nav">
@@ -61,7 +74,7 @@
 
       foreach($cliente2 as $linha){
         echo'
-      <form action="../controle/clienteDTO.php" method="POST" enctype="multipart/form-data">
+      <form action="controle/clienteDTO.php" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="fid" value="'.$linha['cliente_id'].'">
         <div class="form-row">
           <div class="form-group col-md-6">
@@ -85,8 +98,6 @@
           </div>
         </div>';
       }
-
-      session_start();
 
       if(isset($_SESSION['cliente_atu'])){
         echo $_SESSION['cliente_atu'];

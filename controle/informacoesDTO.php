@@ -90,7 +90,6 @@
             $estado = $_POST['estados'];
             $numero = $_POST['numero'];
             $idusuario = $_POST['idempresa'];
-            // array da imagem
     
             // chamada do objeto informações
             $info = new Informacoes();

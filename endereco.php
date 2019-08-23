@@ -51,7 +51,7 @@
 
     <!-- INICIO DA ZONA FORMULARIO DE INFORMACOES -->
     <div class="container">
-      <form action="../controle/informacoesDTO.php" method="POST">
+      <form action="controle/informacoesDTO.php" method="POST">
 
         <input type="hidden" name="idempresa" value="<?php echo $_GET['idusuario']?>">
 

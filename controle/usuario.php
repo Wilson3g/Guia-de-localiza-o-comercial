@@ -73,9 +73,9 @@
         $_SESSION['status'] = $rst['status'];
 
         if($_SESSION['status'] == 1 ){
-          echo "<script>window.location.href='../view/area-administrativa.php'</script>";
+          echo "<script>window.location.href='../area-administrativa.php'</script>";
         }else{
-          echo"<script>window.location.href='../view/index.php'</script>";
+          echo"<script>window.location.href='../index.php'</script>";
         }
       }
     }

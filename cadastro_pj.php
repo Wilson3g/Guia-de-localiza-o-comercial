@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-	<meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 	<!-- folhas de estilo -->
     <link rel="stylesheet" href="css/estilo.css">
@@ -30,7 +31,6 @@
 
     <ul class="navbar-nav1">
         <li><a href="index.php">Início</a></li>
-        <li><a href="social.php">Social Flip</a></li>
         <li><a href="logar.php">Entrar</a></li>
       </ul>
   </nav>
@@ -49,15 +49,15 @@
 	<!-- INICIO DA ZONA DE CADASTRO -->
 	
 	<div class="d1">
-		<img src="../img/bg2.jpeg" alt="">
+		<img src="img/bg2.jpeg" alt="">
 	</div>
 
   <div class="login">
-    <form action="../controle/informacoesDTO.php" method="POST">
+    <form action="controle/informacoesDTO.php" method="POST">
       <h2>Cadastrar minha empresa</h2>
 
       <label for="">Email</label>
-      <input class="txtb" name="email" type="text">
+      <input class="txtb" name="email" type="email">
 
       <label for="Senha">Senha</label>
       <input class="txtb" name="senha" type="password">

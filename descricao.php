@@ -1,5 +1,5 @@
 <?php
-    include_once '../controle/empresaDAO.php';
+    include_once 'controle/empresaDAO.php';
     $id = $_GET['id'];
     
 ?>
@@ -14,7 +14,7 @@
 
         <link rel="stylesheet" href="css/estilo.css">
 
-        <link rel="stylesheet" href="../font-awsome/css/all.min.css">
+        <link rel="stylesheet" href="font-awsome/css/all.min.css">
 
     </head>
     <body>
@@ -36,13 +36,15 @@
             <li><a href="index.php">Início</a></li>
             <li><a href="social.php">Social Flip</a></li>
             <?php
-                include_once('../controle/clienteDAO.php');
+                include_once('controle/clienteDAO.php');
 
                 session_start();
                 if(isset($_SESSION['logado'])){
                     $idCliente = $_SESSION['logado'];
                     echo'
-            <li><a href="atualizar-cliente.php?idusuario='.$idCliente.'">Meu perfil</a></li>';
+            <li><a href="atualizar-cliente.php?idusuario='.$idCliente.'">Meu perfil</a></li>
+            <li><a href="controle/sair.php">Sair</li>';
+            
                 }else{
                     echo'
             <li><a href="logar.php">Entrar</a></li>';
@@ -76,7 +78,7 @@
                 <article class="mainArticle">
 
                     <div class="foto-perfil">
-                        <img src="../imagens-perfil/'.$linha['foto_perfil'].'" height="40vh" width="100%" alt="">
+                        <img src="imagens-perfil/'.$linha['foto_perfil'].'" height="40vh" width="100%" alt="">
                     </div>';
             }
         ?>
@@ -131,7 +133,7 @@
                             unset($_SESSION['msg_ava']);
                 }
                 echo
-                        '<form method="POST" action="../controle/clienteDTO.php" enctype="multipart/form-data">
+                        '<form method="POST" action="controle/clienteDTO.php" enctype="multipart/form-data">
                             <div class="estrelas">
             
                                 <input type="hidden" name="idcomentario" value="'.$id.'">
@@ -173,7 +175,7 @@
 
             if(isset($_SESSION['logado'])){
                 echo'
-                        <form action="../controle/clienteDTO.php" id="menu-form" method="post">
+                        <form action="controle/clienteDTO.php" id="menu-form" method="post">
 
                             <input type="hidden" name="idcomentario" value="'.$id.'">
 
@@ -185,7 +187,7 @@
                         </form>';
             }else{
                 echo'
-                        <form action="../controle/clienteDTO.php" id="menu-form" method="post">
+                        <form action="controle/clienteDTO.php" id="menu-form" method="post">
 
                                     <input type="hidden" name="idcomentario" value="'.$id.'">
 
@@ -205,7 +207,7 @@
             foreach($comentario as $linha){
                 echo'
                 <div class="media">
-                    <img src="../imagens-perfil-usuario/'.$linha['foto_perfil'].'" class="mr-3" alt="...">
+                    <img src="imagens-perfil-usuario/'.$linha['foto_perfil'].'" class="mr-3" alt="...">
                     <div class="media-body">
                         <h5 class="mt-0">'.$linha['nome'].' '.$linha['sobrenome'].'</h5>
                         '.$linha['comentario'].';

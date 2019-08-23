@@ -1,5 +1,5 @@
 <?php
-  include_once '../controle/empresaDAO.php';
+  include_once 'controle/empresaDAO.php';
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -23,21 +23,34 @@
     <!-- INICIO DA ZONA DE MENU -->
 
     <nav class="navbar1">
-      <span class="open-slide">
+        <span class="open-slide">
         <a href="#" onclick="openSlideMenu()">
-          <svg width="30" height="30">
-              <path d="M0,5 30,5" stroke="#000" stroke-width="5"/>
-              <path d="M0,14 30,14" stroke="#000" stroke-width="5"/>
-              <path d="M0,23 30,23" stroke="#000" stroke-width="5"/>
-          </svg>
+            <svg width="30" height="30">
+                <path d="M0,5 30,5" stroke="#000" stroke-width="5"/>
+                <path d="M0,14 30,14" stroke="#000" stroke-width="5"/>
+                <path d="M0,23 30,23" stroke="#000" stroke-width="5"/>
+            </svg>
         </a>
-      </span>
+        </span>
 
-      <ul class="navbar-nav1">
+        <ul class="navbar-nav1">
         <li><a href="index.php">Início</a></li>
-        <li><a href="social.php">Social Flip</a></li>
-        <li><a href="logar.php">Entrar</a></li>
-      </ul>
+        <?php
+            include_once('controle/clienteDAO.php');
+
+            session_start();
+            if(isset($_SESSION['logado'])){
+                $idCliente = $_SESSION['logado'];
+                echo'
+        <li><a href="atualizar-cliente.php?idusuario='.$idCliente.'">Meu perfil</a></li>
+        <li><a href="controle/sair.php">Sair</li>';
+        
+            }else{
+                echo'
+        <li><a href="logar.php">Entrar</a></li>';
+            }
+        ?>
+        </ul>
     </nav>
 
     <div id="side-menu" class="side-nav">
@@ -91,13 +104,13 @@
                 if($x < $loopH){
                   echo'
                     <div class="card">
-                      <a href="#">
-                        <img src="../imagens-perfil/15578548345cdafa72ce45c.jpg" alt="Denim Jeans" style="width:100%; height:250px">
-                      </a>
+                    <a href="descricao.php?id='.$linha['empresa_id'].'">
+                      <img src="imagens-perfil/'.$linha['foto_perfil'].'" alt="Guia">
+                    </a>
                         <h4>'.$linha['nome'].'</h4>
                       <p class="price">'.$linha['tipo_estabelecimento'].'</p>
                       <p>'.$linha['endereco'].'</p>
-                      <p><button>Ver mais</button></p>
+                      <p><button onclick= "redirect('.$linha['empresa_id'].')">Ver mais</button></p>
                     </div>
                   ';
 
@@ -175,6 +188,10 @@
       function closeSlideMenu(){
         document.getElementById('side-menu').style.width = '0';
         document.getElementById('main').style.marginLeft = '0';
+      }
+
+      function redirect(id){
+        window.location.href="descricao.php?id="+id
       }
     </script>
 
