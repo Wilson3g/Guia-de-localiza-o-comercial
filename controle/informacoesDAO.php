@@ -19,86 +19,112 @@
         private $numero;
         private $pdo;
 
-        public function __construct(){
+        public function __construct()
+        {
             $this->pdo = Conexao::getInstance();
         }
 
-        public function setNome($nome){
+        public function setNome($nome)
+        {
             $this->nome = $nome;
         }
-        public function setDescricao($descricao){
+        public function setDescricao($descricao)
+        {
             $this->descricao = $descricao;
         }
-        public function setInicioExpediente($inicioExpediente){
+        public function setInicioExpediente($inicioExpediente)
+        {
             $this->inicioExpediente = $inicioExpediente;
         }
-        public function setFimExpediente($fimExpediente){
+        public function setFimExpediente($fimExpediente)
+        {
             $this->fimExpediente = $fimExpediente;
         }
-        public function setTipoEstabelecimento($tipoEstabelecimento){
+        public function setTipoEstabelecimento($tipoEstabelecimento)
+        {
             $this->tipoEstabelecimento = $tipoEstabelecimento;
         }
-        public function setFoto($foto){
+        public function setFoto($foto)
+        {
             $this->foto = $foto;
         }
-        public function setCNPJ($cnpj){
+        public function setCNPJ($cnpj)
+        {
             $this->cnpj = $cnpj;
         }
-        public function setTelefone($telefone){
+        public function setTelefone($telefone)
+        {
             $this->telefone = $telefone;
         }
-        public function setEndereco($endereco){
+        public function setEndereco($endereco)
+        {
             $this->endereco = $endereco;
         }
-        public function setCidade($cidade){
+        public function setCidade($cidade)
+        {
             $this->cidade = $cidade;
         }
-        public function setEstado($estado){
+        public function setEstado($estado)
+        {
             $this->estado = $estado;
         }
-        public function setNumero($numero){
+        public function setNumero($numero)
+        {
             $this->numero = $numero;
         }
   
 
-        public function getNome(){
+        public function getNome()
+        {
             return $this->nome;
         }
-        public function getDescricao(){
+        public function getDescricao()
+        {
             return $this->descricao;
         }
-        public function getInicioExpediente(){
+        public function getInicioExpediente()
+        {
             return $this->inicioExpediente;
         }
-        public function getFimExpediente(){
+        public function getFimExpediente()
+        {
             return $this->fimExpediente;
         }
-        public function getTipoEstabelecimento(){
+        public function getTipoEstabelecimento()
+        {
             return $this->tipoEstabelecimento;
         }
-        public function getFoto(){
+        public function getFoto()
+        {
             return $this->foto;
         }
-        public function getCNPJ(){
+        public function getCNPJ()
+        {
             return $this->cnpj;
         }
-        public function getTelefone(){
+        public function getTelefone()
+        {
             return $this->telefone;
         }
-        public function getEndereco(){
+        public function getEndereco()
+        {
             return $this->endereco;
         }
-        public function getCidade(){
+        public function getCidade()
+        {
             return $this->cidade;
         }
-        public function getEstado(){
+        public function getEstado()
+        {
             return $this->estado;
         }
-        public function getNumero(){
+        public function getNumero()
+        {
             return $this->numero;
         }
 
-        public function salvar($empresa){
+        public function salvar($empresa)
+        {
         
             // //SELECIONA OS DADOS DO BANCO
             // $query_select = "SELECT email FROM empresa WHERE email = ':email'";
@@ -137,7 +163,8 @@
                 }
         }
 
-        public function inserirInformacoes($dados, $img, $idusuario){
+        public function inserirInformacoes($dados, $img, $idusuario)
+        {
 
             $id =  $idusuario;
                         
@@ -177,7 +204,8 @@
             }
         }
 
-        public function inserirEndereco($dados, $idusuario){
+        public function inserirEndereco($dados, $idusuario)
+        {
             
             $id =  $idusuario;
 

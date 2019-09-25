@@ -12,45 +12,55 @@
     private $pdo;
     
     // INSTANCIA DA CONEXAO
-    public function __construct(){
+    public function __construct()
+    {
       $this->pdo = Conexao::getInstance();
     }
 
     // METEDOS SETTERS E GETTERS
-    public function setNome($nome){
+    public function setNome($nome)
+    {
       $this->nome = $nome;
     }
 
-    public function setSobrenome($sobrenome){
+    public function setSobrenome($sobrenome)
+    {
       $this->sobrenome = $sobrenome;
     }
 
-    public function setSenha($senha){
+    public function setSenha($senha)
+    {
       $this->senha = $senha;
     }
 
-    public function setEmail($email){
+    public function setEmail($email)
+    {
       $this->email = $email;
     }
 
-    public function getNome(){
+    public function getNome()
+    {
       return $this->nome;
     }
 
-    public function getSobrenome(){
+    public function getSobrenome()
+    {
       return $this->sobrenome;
     }
 
-    public function getSenha(){
+    public function getSenha()
+    {
       return $this->senha;
     }
 
-    public function getEmail(){
+    public function getEmail()
+    {
       return $this->email;
     }
       
     // FUNCAO LOGAR FUNCIONARIOS
-    public function logar($dados){
+    public function logar($dados)
+    {
       $this->email = $dados['email'];
       $this->senha = sha1($dados['senha']);
 

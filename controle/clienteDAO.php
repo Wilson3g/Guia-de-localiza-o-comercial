@@ -9,21 +9,25 @@
     private $pdo;
 
     // INSTANCIA DA CONEXAO
-    public function __construct(){
+    public function __construct()
+    {
       $this->pdo = Conexao::getInstance();
     }
 
     // SETTERS E GETTER TELEFONE
-    public function setCpf($cpf){
+    public function setCpf($cpf)
+    {
       $this->cpf = $cpf;
     }
 
-    public function getCpf(){
+    public function getCpf()
+    {
       return $this->cpf;
     }
     
     // INSERE OS DADOS NO BANCO DE DADOS
-    function salvar($array){
+    function salvar($array)
+    {
 
       try{
         $sql = "INSERT INTO login (email, senha) VALUES (?,?)";
@@ -43,7 +47,8 @@
       }
     }
 
-    public function informacoesCliente($dados, $img, $idusuario){
+    public function informacoesCliente($dados, $img, $idusuario)
+    {
   
       $id =  $idusuario;
                         
@@ -77,7 +82,8 @@
     }
     }
 
-    public function avaliarEstabelecimento($idEmpresa, $idUsuario, $avaliacao){
+    public function avaliarEstabelecimento($idEmpresa, $idUsuario, $avaliacao)
+    {
       try{
         // Busca o id do usuário
         $select = "SELECT cliente_id FROM cliente INNER JOIN login on cliente.login_login_id = login.login_id WHERE login_id = ?";
@@ -121,7 +127,8 @@
       }
     }
 
-    public function comentar($idEmpresa, $idUsuario, $comentario){
+    public function comentar($idEmpresa, $idUsuario, $comentario)
+    {
 
       try{
         // Busca o id do usuário
@@ -152,7 +159,8 @@
       }
     }
 
-    public function listarInformacoesCliente($id){
+    public function listarInformacoesCliente($id)
+    {
 
       $sql = "SELECT * FROM cliente INNER JOIN login on cliente.login_login_id = login.login_id WHERE login.login_id = ?";
       $stmt = $this->pdo->prepare($sql);
@@ -162,7 +170,8 @@
       return $clientes;
     }
 
-    function atualizarInformacoesCliente($id, $array){
+    function atualizarInformacoesCliente($id, $array)
+    {
       try{
 
         $sql = "UPDATE cliente SET nome=?, sobrenome=? WHERE cliente_id=?";

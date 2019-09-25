@@ -8,22 +8,26 @@
     private $pdo;
 
     // INSTANCIA DA CONEXAO
-    public function __construct(){
+    public function __construct()
+    {
       $this->pdo = Conexao::getInstance();
     }
 
     // SETTERS E GETTER TELEFONE
-    public function setCNPJ($cnpj){
+    public function setCNPJ($cnpj)
+    {
       $this->cnpj = $cnpj;
     }
 
-    public function getCNPJ(){
+    public function getCNPJ()
+    {
       return $this->cnpj;
     }
 
     // SESSAO DE LISTA
 
-      public function listarEmpresas(){
+      public function listarEmpresas()
+      {
         $sql = "SELECT * FROM empresa INNER JOIN endereco ON empresa.empresa_id = endereco.empresa_empresa_id ORDER BY empresa_id DESC";
         $stmt = $this->pdo->prepare($sql);
         $stmt -> execute();
@@ -31,7 +35,8 @@
         return $empresas;
       }
 
-      public function listarInformacoes($id){
+      public function listarInformacoes($id)
+      {
         $sql = "SELECT * FROM empresa INNER JOIN endereco ON empresa.empresa_id = endereco.empresa_empresa_id WHERE empresa_id = ? ORDER BY empresa_id DESC";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(1, $id);
@@ -42,7 +47,8 @@
 
       // lista estabelecimentos por categorias
 
-      public function listarLojas(){
+      public function listarLojas()
+      {
         $sql = "SELECT * FROM empresa INNER JOIN endereco ON empresa.empresa_id = endereco.empresa_empresa_id WHERE tipo_estabelecimento = 'loja' ORDER BY empresa_id DESC";
         $stmt = $this->pdo->prepare($sql);
         $stmt -> execute();
@@ -50,7 +56,8 @@
         return $empresas;
       }
 
-      public function listarRestaurantes(){
+      public function listarRestaurantes()
+      {
         $sql = "SELECT * FROM empresa INNER JOIN endereco ON empresa.empresa_id = endereco.empresa_empresa_id WHERE tipo_estabelecimento = 'restaurante' ORDER BY empresa_id DESC";
         $stmt = $this->pdo->prepare($sql);
         $stmt -> execute();
@@ -58,7 +65,8 @@
         return $empresas;
       }
 
-      public function listarBares(){
+      public function listarBares()
+      {
         $sql = "SELECT * FROM empresa INNER JOIN endereco ON empresa.empresa_id = endereco.empresa_empresa_id WHERE tipo_estabelecimento = 'bares' ORDER BY empresa_id DESC";
         $stmt = $this->pdo->prepare($sql);
         $stmt -> execute();
@@ -66,7 +74,8 @@
         return $empresas;
       }
 
-      public function exibirAvaliacao($id){
+      public function exibirAvaliacao($id)
+      {
         $sql = "SELECT avaliacao FROM avaliacao WHERE empresa_empresa_id = ?";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(1, $id);
@@ -75,7 +84,8 @@
         return $avaliacao;
       }
 
-      public function exibirComentario($id){
+      public function exibirComentario($id)
+      {
         $sql = "SELECT * FROM comentario INNER JOIN cliente on comentario.cliente_cliente_id = cliente.cliente_id WHERE empresa_empresa_id = ?";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(1, $id);
@@ -84,7 +94,8 @@
         return $comentario;
       }
 
-      public function atualizarInformacoes($id, $dados, $img){
+      public function atualizarInformacoes($id, $dados, $img)
+      {
                       
         $name = $img['name'];
         $tmp = $img['tmp_name'];
@@ -125,7 +136,8 @@
         }
       }
 
-      public function listarInformacoesEmpresa($id){
+      public function listarInformacoesEmpresa($id)
+      {
 
         $sql = "SELECT * FROM empresa WHERE empresa_id = $id";
         $stmt = $this->pdo->prepare($sql);

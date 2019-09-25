@@ -4,31 +4,34 @@
     class Administrador{
         private $pdo;
 
-        public function __construct(){
+        public function __construct()
+        {
             $this->pdo = Conexao::getInstance();
         }
 
         // CRUD EMPRESAS
 
-        public function deletarEmpresa($id){
-            try {
-                $sql = "UPDATE empresa SET situacao = '0' WHERE empresa_id = ?";
-                $stmt = $this->pdo->prepare($sql);
-                $stmt->bindValue(1, $id);
-                $stmt->execute();
+        public function deletarEmpresa($id)
+        {
+          try {
+              $sql = "UPDATE empresa SET situacao = '0' WHERE empresa_id = ?";
+              $stmt = $this->pdo->prepare($sql);
+              $stmt->bindValue(1, $id);
+              $stmt->execute();
 
-                if(isset($stmt)){
-                    echo"<script>window.location.href='../view/administrar-empresa.php'</script>";
-                }else{
-                  echo"<script>alert('Erro ao deletar empresa');window.location.href='../view/administrar-empresa.php'</script>";
-                }
+              if(isset($stmt)){
+                  echo"<script>window.location.href='../view/administrar-empresa.php'</script>";
+              }else{
+                echo"<script>alert('Erro ao deletar empresa');window.location.href='../view/administrar-empresa.php'</script>";
+              }
 
-            } catch (PDOException $exc) {
-                echo $exc->getMessage();
-            }
+          } catch (PDOException $exc) {
+              echo $exc->getMessage();
+          }
         }
 
-        public function ativarEmpresa($id) {
+        public function ativarEmpresa($id) 
+        {
           try {
               $sql = "UPDATE empresa SET situacao = '1' WHERE empresa_id = ?";
               $stmt = $this->pdo->prepare($sql);
@@ -46,7 +49,8 @@
           }
         }
 
-        public function buscarEmpresas($buscar){
+        public function buscarEmpresas($buscar)
+        {
             echo'
               <table class="table">
               
@@ -95,7 +99,8 @@
             echo '</table>';
         }
 
-        public function atualizarInformacoes($id, $dados, $img){
+        public function atualizarInformacoes($id, $dados, $img)
+        {
                       
           $name = $img['name'];
           $tmp = $img['tmp_name'];
@@ -136,7 +141,8 @@
           }
         }
 
-        public function listarInformacoesEmpresa($id){
+        public function listarInformacoesEmpresa($id)
+        {
 
           $sql = "SELECT * FROM empresa WHERE empresa_id = $id";
           $stmt = $this->pdo->prepare($sql);
@@ -147,7 +153,8 @@
 
         // CRUD CLIENTES
 
-        public function buscarClientes($buscar){
+        public function buscarClientes($buscar)
+        {
           echo'
               <table class="table">
               
@@ -195,7 +202,8 @@
           echo'</table>';
         }
 
-        public function deletarCliente($id) {
+        public function deletarCliente($id) 
+        {
           try {
               $sql = "UPDATE cliente SET situacao = '0' WHERE cliente_id = ?";
               $stmt = $this->pdo->prepare($sql);
@@ -213,7 +221,8 @@
           }
         }
 
-        public function ativarCliente($id) {
+        public function ativarCliente($id) 
+        {
           try {
               $sql = "UPDATE cliente SET situacao = '1' WHERE cliente_id = ?";
               $stmt = $this->pdo->prepare($sql);
@@ -231,7 +240,8 @@
           }
         }
 
-      function atualizarInformacoesCliente($id, $array){
+      function atualizarInformacoesCliente($id, $array)
+      {
         try{
 
           $sql = "UPDATE cliente SET nome_completo=?, cpf=? WHERE cliente_id=?";
@@ -254,7 +264,8 @@
         }
       }
 
-      public function listarInformacoesCliente($id){
+      public function listarInformacoesCliente($id)
+      {
 
         $sql = "SELECT * FROM cliente INNER JOIN login_usuario on cliente.login_id = login_usuario.login_id WHERE cliente_id = ?";
         $stmt = $this->pdo->prepare($sql);
@@ -264,7 +275,8 @@
         return $clientes;
       }
 
-      public function listarCupons(){
+      public function listarCupons()
+      {
         $sql = "SELECT * FROM cupom";
         $stmt = $this->pdo->prepare($sql);
         $stmt -> execute();
@@ -285,7 +297,8 @@
         }
       }
 
-      public function deletarCupom(){
+      public function deletarCupom()
+      {
         $sql = "TRUNCATE TABLE cupom";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
