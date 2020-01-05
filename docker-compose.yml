@@ -1,0 +1,31 @@
+version: '3'
+
+services: 
+    php:
+        build: .
+        ports:
+            - "8081:80"
+            - "443:443"
+        volumes:
+            - .:/var/www/html
+        networks: 
+            - app-network
+    mysql:
+        image: mysql:5.7
+        command: --innodb-use-native-aio=0
+        container_name: database_guia
+        restart: always
+        tty: true
+        ports: 
+            - "3309:3306"
+        environment:
+            - MYSQL_DATABASE=guia
+            - MYSQL_ROOT_PASSWORD=root
+            - MYSQL_USER=root
+        networks: 
+            - app-network
+networks: 
+    app-network:
+        driver: bridge
+    
+    
